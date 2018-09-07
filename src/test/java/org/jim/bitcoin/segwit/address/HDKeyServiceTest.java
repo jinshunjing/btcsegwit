@@ -55,8 +55,8 @@ public class HDKeyServiceTest {
         for (String script : scripts) {
             System.out.println(script);
         }
-        // a9144733f37cf4db86fbc2efed2500b4f4e49f31202387
-        // 001479091972186c449eb1ded22b78e40d009bdf0089
+        // a914659466b9e5fc0ce2f22709aae01337ae4305f73887
+        // 001450507ef7413040b843344d32f74927fcb2fc74a8
     }
 
     @Test

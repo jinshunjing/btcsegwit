@@ -60,7 +60,6 @@ public class HDKeyService {
 
         // public key hash
         byte[] pubKeyHash = dKey.getPubKeyHash();
-        pubKeyHash = DeterministicKey.fromPublicOnly(Utils.HEX.decode("03ad1d8e89212f0b92c74d23bb710c00662ad1470198ac48c43f7d6f93a2a26873")).getPubKeyHash();
 
         // redeem script
         Script redeemScript = (new ScriptBuilder()).data(new byte[0]).data(pubKeyHash).build();
