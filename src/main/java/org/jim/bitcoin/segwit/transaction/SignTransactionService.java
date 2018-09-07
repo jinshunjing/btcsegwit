@@ -9,6 +9,7 @@ import org.bitcoinj.script.ScriptBuilder;
 
 /**
  * Sign the tx with SegWit vin
+ * https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki#P2SHP2WPKH
  */
 public class SignTransactionService {
 
@@ -19,9 +20,12 @@ public class SignTransactionService {
 
         // hash for sign
         Sha256Hash hash = transaction.hashForSignature(vin, Utils.HEX.decode(redeemScript), Transaction.SigHash.ALL, false);
+        System.out.println(hash.toString());
+        // Why the hash is wrong?
 
-        // sign
-        ECKey ecKey = DumpedPrivateKey.fromBase58(networkParam, prvKey).getKey();
+        /// sign
+        //ECKey ecKey = DumpedPrivateKey.fromBase58(networkParam, prvKey).getKey();
+        ECKey ecKey = ECKey.fromPrivate(Utils.HEX.decode(prvKey));
         ECKey.ECDSASignature signature = ecKey.sign(hash);
         String signatureHex = Utils.HEX.encode(signature.encodeToDER());
 

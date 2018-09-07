@@ -11,7 +11,7 @@ public class HDKeyServiceTest {
 
     @Test
     public void testDeriveAddress() {
-        int network = 0;
+        int network = 1;
 
         // beauty blast arctic west there disease employ nose clinic silly enforce two
         String xPubKey = "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5";
@@ -19,8 +19,9 @@ public class HDKeyServiceTest {
         int changeType = 0;
         int index = 0;
 
-        String address = HDKeyService.deriveWitnessAddress(0, xPubKey, changeType, index);
+        String address = HDKeyService.deriveWitnessAddress(network, xPubKey, changeType, index);
         System.out.println(address);
+        // 2N2WL1m3Gz2kYAPuEhAsLLrDSM2qgqdG65N
     }
 
     @Test
@@ -31,8 +32,8 @@ public class HDKeyServiceTest {
         String[] xPubKeys = new String[] {
                 // beauty blast arctic west there disease employ nose clinic silly enforce two
                 "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5",
-                //
-                "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5"
+                // cost broom proof bomb reject kangaroo enforce census night forum among tree
+                "xpub6CDJhZhokuaW1tBcUKvi8jXmDx7iptX9xYPe8878YBSpkE8fTN5UiB3a5DEbM5TUMB2Zn2oidYEMXutB1tmKegmTi4QH8GChBcCK4VfMGhm"
         };
 
         int changeType = 0;
@@ -54,6 +55,8 @@ public class HDKeyServiceTest {
         for (String script : scripts) {
             System.out.println(script);
         }
+        // a9144733f37cf4db86fbc2efed2500b4f4e49f31202387
+        // 001479091972186c449eb1ded22b78e40d009bdf0089
     }
 
     @Test
@@ -72,8 +75,8 @@ public class HDKeyServiceTest {
         String[] xPubKeys = new String[] {
                 // beauty blast arctic west there disease employ nose clinic silly enforce two
                 "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5",
-                //
-                "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5"
+                // cost broom proof bomb reject kangaroo enforce census night forum among tree
+                "xpub6CDJhZhokuaW1tBcUKvi8jXmDx7iptX9xYPe8878YBSpkE8fTN5UiB3a5DEbM5TUMB2Zn2oidYEMXutB1tmKegmTi4QH8GChBcCK4VfMGhm"
         };
 
         int changeType = 0;
