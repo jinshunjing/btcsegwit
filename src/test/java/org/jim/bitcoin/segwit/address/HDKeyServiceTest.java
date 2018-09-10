@@ -10,6 +10,22 @@ import java.util.Arrays;
 public class HDKeyServiceTest {
 
     @Test
+    public void testDeriveScript() {
+        // beauty blast arctic west there disease employ nose clinic silly enforce two
+        String xPubKey = "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5";
+
+        int changeType = 0;
+        int index = 0;
+
+        String[] scripts = HDKeyService.deriveWitnessScript(xPubKey, changeType, index);
+        for (String script : scripts) {
+            System.out.println(script);
+        }
+        // 0274f7bcdf9b6e2d3aa0cded33871f4e4a1956b1c3214b5c65dc7da61306d35d4e
+        // 001450507ef7413040b843344d32f74927fcb2fc74a8
+    }
+
+    @Test
     public void testDeriveAddress() {
         int network = 1;
 
@@ -41,22 +57,6 @@ public class HDKeyServiceTest {
 
         String address = HDKeyService.deriveWitnessAddress(0, m, Arrays.asList(xPubKeys), changeType, index);
         System.out.println(address);
-    }
-
-    @Test
-    public void testDeriveScript() {
-        // beauty blast arctic west there disease employ nose clinic silly enforce two
-        String xPubKey = "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5";
-
-        int changeType = 0;
-        int index = 0;
-
-        String[] scripts = HDKeyService.deriveWitnessScript(xPubKey, changeType, index);
-        for (String script : scripts) {
-            System.out.println(script);
-        }
-        // a914659466b9e5fc0ce2f22709aae01337ae4305f73887
-        // 001450507ef7413040b843344d32f74927fcb2fc74a8
     }
 
     @Test

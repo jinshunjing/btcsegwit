@@ -59,6 +59,7 @@ public class HDKeyService {
         DeterministicKey dKey = deriveChildKey(xPubKey, changeType, index);
 
         // public key hash
+        String pubKeyHex = dKey.getPublicKeyAsHex();
         byte[] pubKeyHash = dKey.getPubKeyHash();
 
         // redeem script
@@ -70,7 +71,7 @@ public class HDKeyService {
         Script p2shScript = (new ScriptBuilder()).op(169).data(hash160).op(135).build();
         String scriptPubKeyHex = Utils.HEX.encode(p2shScript.getProgram());
 
-        return new String[]{scriptPubKeyHex, redeemScriptHex};
+        return new String[]{pubKeyHex, redeemScriptHex};
     }
 
     /**

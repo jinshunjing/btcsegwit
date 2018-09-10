@@ -1,6 +1,8 @@
 package org.jim.bitcoin.segwit.transaction;
 
 import org.bitcoinj.core.*;
+import org.bitcoinj.script.Script;
+import org.jim.bitcoin.segwit.transaction.TransactionWitness;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -69,4 +71,5 @@ public class SegwitTransaction extends Transaction {
         // lock_time
         Utils.uint32ToByteStreamLE(super.getLockTime(), stream);
     }
+
 }
