@@ -27,7 +27,7 @@ public class HDKeyServiceTest {
 
     @Test
     public void testDeriveAddress() {
-        int network = 1;
+        int network = 0;
 
         // beauty blast arctic west there disease employ nose clinic silly enforce two
         String xPubKey = "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5";
@@ -41,51 +41,53 @@ public class HDKeyServiceTest {
     }
 
     @Test
-    public void testDeriveMultiSigAddress() {
-        int network = 0;
-
-        int m = 2;
-        String[] xPubKeys = new String[] {
-                // beauty blast arctic west there disease employ nose clinic silly enforce two
-                "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5",
-                // cost broom proof bomb reject kangaroo enforce census night forum among tree
-                "xpub6CDJhZhokuaW1tBcUKvi8jXmDx7iptX9xYPe8878YBSpkE8fTN5UiB3a5DEbM5TUMB2Zn2oidYEMXutB1tmKegmTi4QH8GChBcCK4VfMGhm"
-        };
-
-        int changeType = 0;
-        int index = 0;
-
-        String address = HDKeyService.deriveWitnessAddress(0, m, Arrays.asList(xPubKeys), changeType, index);
-        System.out.println(address);
-    }
-
-    @Test
     public void testDeriveMultiSigScript() {
-        /*
-        keyList.clear();
-        keyList.add(ECKey.fromPublicOnly(Utils.HEX.decode("0307b8ae49ac90a048e9b53357a2354b3334e9c8bee813ecb98e99a7e07e8c3ba3")));
-        keyList.add(ECKey.fromPublicOnly(Utils.HEX.decode("03b28f0c28bfab54554ae8c658ac5c3e0ce6e79ad336331f78c428dd43eea8449b")));
-        keyList.add(ECKey.fromPublicOnly(Utils.HEX.decode("034b8113d703413d57761b8b9781957b8c0ac1dfe69f492580ca4195f50376ba4a")));
-        keyList.add(ECKey.fromPublicOnly(Utils.HEX.decode("033400f6afecb833092a9a21cfdf1ed1376e58c5d1f47de74683123987e967a8f4")));
-        keyList.add(ECKey.fromPublicOnly(Utils.HEX.decode("03a6d48b1131e94ba04d9737d61acdaa1322008af9602b3b14862c07a1789aac16")));
-        keyList.add(ECKey.fromPublicOnly(Utils.HEX.decode("02d8b661b0b3302ee2f162b09e07a55ad5dfbe673a9f01d9f0c19617681024306b")));
-        */
+        int m = 2;
 
-        int m = 6;
         String[] xPubKeys = new String[] {
-                // beauty blast arctic west there disease employ nose clinic silly enforce two
-                "xpub6DUFzWDVyVF1yKUhq1QnRrxy8cko4b3Wa3irzUhYuXNcJn4U8Yfropodio8EXKbyDiPsVEWcgvULfvNUnyQVPZLe46uHwMCwMpUz3sdPYN5",
-                // cost broom proof bomb reject kangaroo enforce census night forum among tree
-                "xpub6CDJhZhokuaW1tBcUKvi8jXmDx7iptX9xYPe8878YBSpkE8fTN5UiB3a5DEbM5TUMB2Zn2oidYEMXutB1tmKegmTi4QH8GChBcCK4VfMGhm"
+                // sense neutral mouse praise pause able have immense domain grass gesture goat
+                "xpub6CauQQeMHMPoz83GgntV8RnT8BrErgPcGyHspePmKsQznJGfP1anALMdnQGj9ExmqHxchuPATjGnA5n9Qj5yjbFMur27PzvXBxk6zqc8gKR",
+                // submit short jelly wolf tragic congress bench abandon reason frost recipe design
+                "xpub6CBdjTfG71uiuyd5VUZZPf6eKK4UswMwsvJv3LnpfmwkeDa2U6XwEwUj5BJm4cFfHZMf5nBJKaJbLZVYfD7AP9UWB4aJ3Mbb9nbAhXWWgAU",
+                // carbon task under clip work someone stairs cruise achieve green elbow stove
+                "xpub6C688CScVWhjfSuvd8SCRPVL6ovAXCNE7F6C5ZLb7svMXkUMEnYQ6n798GFhYTiEVUFzJEVbFyPSsQQXCgnpaYTPbnhkNngfofCQDrvFD8v"
         };
 
         int changeType = 0;
         int index = 0;
+        // L3PrLDgmNGinx6fS6FUJooQZu8GKME5bNnMJjRzA7MKt9D4hZqyH
+        // L5SoyU66w6fnFsDDm5LTAb8eNijma2Dn6jYGFsBwfy4F9qqbudQK
+        // L5aRKaMFWKjcG8AX9mdtcFFYSahVpagQzhnvK8qk2g85YQTVMzE8
 
-        String[] scripts = HDKeyService.deriveWitnessScript( m, Arrays.asList(xPubKeys), changeType, index);
+        String[] scripts = HDKeyService.deriveWitnessScript(m, Arrays.asList(xPubKeys), changeType, index);
         for (String script : scripts) {
             System.out.println(script);
         }
+        // a9142e8772750b46d0ac4d74cfedc4f51b77e5a6e09787
+        // 002026038ba9c29e2794b7f33c0d99273593ff57127cbdb84178aec5aceb784602bf
+        // 522102dd0917925edbf521e355b7a1756c4d660be4ed770fb2379d54c400d3ecc7fc6d210397c7ccf98a8b6b7a1f18110124c027664e42f36cfa7779ed233dd13b2f61aa2e2103e7f319a1f02d913f545cd6ac2f938765acea70078a5c80fb120fc286e452e93e53ae
+    }
+
+    @Test
+    public void testDeriveMultiSigAddress() {
+        int network = 1;
+
+        int m = 2;
+        String[] xPubKeys = new String[] {
+                // sense neutral mouse praise pause able have immense domain grass gesture goat
+                "xpub6CauQQeMHMPoz83GgntV8RnT8BrErgPcGyHspePmKsQznJGfP1anALMdnQGj9ExmqHxchuPATjGnA5n9Qj5yjbFMur27PzvXBxk6zqc8gKR",
+                // submit short jelly wolf tragic congress bench abandon reason frost recipe design
+                "xpub6CBdjTfG71uiuyd5VUZZPf6eKK4UswMwsvJv3LnpfmwkeDa2U6XwEwUj5BJm4cFfHZMf5nBJKaJbLZVYfD7AP9UWB4aJ3Mbb9nbAhXWWgAU",
+                // carbon task under clip work someone stairs cruise achieve green elbow stove
+                "xpub6C688CScVWhjfSuvd8SCRPVL6ovAXCNE7F6C5ZLb7svMXkUMEnYQ6n798GFhYTiEVUFzJEVbFyPSsQQXCgnpaYTPbnhkNngfofCQDrvFD8v"
+        };
+
+        int changeType = 0;
+        int index = 0;
+
+        String address = HDKeyService.deriveWitnessAddress(network, m, Arrays.asList(xPubKeys), changeType, index);
+        System.out.println(address);
+        // 2MwVFL8vw3hLQTrvTfExeJV6BhERiKfgd3E
     }
 
 }
