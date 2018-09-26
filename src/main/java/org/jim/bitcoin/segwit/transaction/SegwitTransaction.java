@@ -12,6 +12,8 @@ import java.util.List;
 
 /**
  * Segwit transaction
+ *
+ * https://bitcoincore.org/en/segwit_wallet_dev/
  */
 public class SegwitTransaction extends Transaction {
 
