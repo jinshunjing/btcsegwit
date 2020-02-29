@@ -2,7 +2,7 @@ package org.jim.bitcoin.segwit.transaction;
 
 import org.bitcoinj.core.Utils;
 import org.bitcoinj.params.MainNetParams;
-import org.bitcoinj.params.TestNet2Params;
+import org.bitcoinj.params.TestNet3Params;
 import org.bitcoinj.script.Script;
 import org.bitcoinj.script.ScriptBuilder;
 import org.junit.Test;
@@ -74,7 +74,7 @@ public class P2shP2wshTest {
         };
 
         // parse unsigned tx
-        SegwitTransaction transaction = new SegwitTransaction(TestNet2Params.get(), Utils.HEX.decode(rawTx));
+        SegwitTransaction transaction = new SegwitTransaction(TestNet3Params.get(), Utils.HEX.decode(rawTx));
 
         // add redeem script
         Script inputScript = (new ScriptBuilder()).data(Utils.HEX.decode(redeemScript)).build();

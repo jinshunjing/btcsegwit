@@ -15,7 +15,7 @@ public class SegwitTransactionHashTest {
     public void testValue() {
         long v = 3800000L;
         byte[] bytes = new byte[8];
-        Utils.uint64ToByteArrayLE(v, bytes, 0);
+        Utils.uint32ToByteArrayLE(v, bytes, 0);
         System.out.println(Utils.HEX.encode(bytes));
     }
 

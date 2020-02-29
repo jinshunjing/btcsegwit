@@ -2,7 +2,7 @@ package org.jim.bitcoin.segwit.transaction;
 
 import org.bitcoinj.core.*;
 import org.bitcoinj.params.MainNetParams;
-import org.bitcoinj.params.TestNet2Params;
+import org.bitcoinj.params.TestNet3Params;
 
 /**
  * Sign the tx with SegWit vin
@@ -28,7 +28,7 @@ public class SignTransactionService {
 
     public static String signInput(int network, String rawTx, int vin, String prvKey, String scriptPubKey, String redeemScript) {
         // build tx
-        NetworkParameters networkParam = (0 == network) ? MainNetParams.get() : TestNet2Params.get();
+        NetworkParameters networkParam = (0 == network) ? MainNetParams.get() : TestNet3Params.get();
         Transaction transaction = new Transaction(networkParam, Utils.HEX.decode(rawTx));
 
         // hash for sign

@@ -1,7 +1,7 @@
 package org.jim.bitcoin.segwit.transaction;
 
 import org.bitcoinj.core.*;
-import org.bitcoinj.params.TestNet2Params;
+import org.bitcoinj.params.TestNet3Params;
 import org.bitcoinj.script.ScriptBuilder;
 
 /**
@@ -115,7 +115,7 @@ public class SegwitTransactionHash {
      * @return
      */
     public static String newTx(String vinTxid, long vinIndex, String outAddr, long value) {
-        NetworkParameters networkParam = TestNet2Params.get();
+        NetworkParameters networkParam = TestNet3Params.get();
         Transaction transaction = new Transaction(networkParam);
 
         // input
@@ -124,7 +124,7 @@ public class SegwitTransactionHash {
         transaction.addInput(vin);
 
         // output
-        transaction.addOutput(Coin.valueOf(value), Address.fromBase58(networkParam, outAddr));
+        transaction.addOutput(Coin.valueOf(value), LegacyAddress.fromBase58(networkParam, outAddr));
 
         return Utils.HEX.encode(transaction.bitcoinSerialize());
     }

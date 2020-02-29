@@ -5,7 +5,7 @@ import org.bitcoinj.crypto.ChildNumber;
 import org.bitcoinj.crypto.DeterministicKey;
 import org.bitcoinj.crypto.HDKeyDerivation;
 import org.bitcoinj.params.MainNetParams;
-import org.bitcoinj.params.TestNet2Params;
+import org.bitcoinj.params.TestNet3Params;
 import org.bitcoinj.script.Script;
 import org.bitcoinj.script.ScriptBuilder;
 
@@ -28,7 +28,7 @@ public class HDKeyService {
      * @return
      */
     public static String deriveWitnessAddress(int network, String xPubKey, int changeType, int index) {
-        NetworkParameters params = (0 == network) ? MainNetParams.get() : TestNet2Params.get();
+        NetworkParameters params = (0 == network) ? MainNetParams.get() : TestNet3Params.get();
 
         // derive the address index key
         DeterministicKey dKey = deriveChildKey(xPubKey, changeType, index);
@@ -41,7 +41,7 @@ public class HDKeyService {
 
         // P2SH address
         byte[] hash160 = Utils.sha256hash160(witnessScript.getProgram());
-        String address = Address.fromP2SHHash(params, hash160).toString();;
+        String address = LegacyAddress.fromP2SHHash(params, hash160).toString();;
 
         return address;
     }
@@ -85,7 +85,7 @@ public class HDKeyService {
      * @return
      */
     public static String deriveWitnessAddress(int network, int m, List<String> xPubKeys, int changeType, int index) {
-        NetworkParameters params = (0 == network) ? MainNetParams.get() : TestNet2Params.get();
+        NetworkParameters params = (0 == network) ? MainNetParams.get() : TestNet3Params.get();
 
         // prepare the pub keys
         List<ECKey> keyList = new ArrayList<>();
@@ -105,7 +105,7 @@ public class HDKeyService {
 
         // P2SH address
         byte[] hash160 = Utils.sha256hash160(redeemScript.getProgram());
-        String address = Address.fromP2SHHash(params, hash160).toString();
+        String address = LegacyAddress.fromP2SHHash(params, hash160).toString();
 
         return address;
     }
@@ -156,7 +156,7 @@ public class HDKeyService {
      */
     private static DeterministicKey deriveChildKey(String xPubKey, int changeType, int index) {
         // build extend public key, which is m/44'/0'/0' or m/44'/1'/0'
-        NetworkParameters params = (xPubKey.startsWith("xpub")) ? MainNetParams.get() : TestNet2Params.get();
+        NetworkParameters params = (xPubKey.startsWith("xpub")) ? MainNetParams.get() : TestNet3Params.get();
         DeterministicKey xPubMaster = DeterministicKey.deserializeB58(xPubKey, params);
 
         // derive the change/receive key
